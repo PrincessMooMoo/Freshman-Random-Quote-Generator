@@ -5,7 +5,7 @@ const endpoint = 'https://api.whatdoestrumpthink.com/api/v1/quotes/random';
 
 async function getQuote() {
     try {
-        const response = awaite fetch(endpoint)
+        const response = await fetch(endpoint)
         if (!response.ok){
             throw Error(response.statusText)
         }
