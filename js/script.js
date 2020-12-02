@@ -10,9 +10,14 @@ async function getQuote() {
             throw Error(response.statusText)
         }
         const json = await response.json();
-        console.log(json);
+        displayQuote(json.message);
     } catch (err) {
         console.log(err)
         alert('Failed to fetch new quote');
     }
+}
+
+function displayQuote(quote){
+    const quoteText = document.querySelector('#js-quote-text');
+    quoteText.textContent = quote;
 }
