@@ -1,3 +1,5 @@
+const twitterButton = document.querySelector('#js-tweet');
+
 const spinner = document.querySelector('#js-spinner');
 
 const newQuoteButton = document.querySelector('#js-new-quote');
@@ -15,6 +17,7 @@ async function getQuote() {
         }
         const json = await response.json();
         displayQuote(json.message);
+        setTweetButton(json.message);
     } catch (err) {
         alert('Failed to fetch new quote');
     } finally {
@@ -27,3 +30,8 @@ function displayQuote(quote){
     const quoteText = document.querySelector('#js-quote-text');
     quoteText.textContent = quote;
 }
+
+function setTweetButton(quote) {
+    twitterButton.setAttribute('href', `https://twitter.com/share?text=${quote} - Donald Trump`);
+}
+getQuote();
